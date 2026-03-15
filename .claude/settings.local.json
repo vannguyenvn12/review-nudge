@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pwsh -c \"Get-Date -UFormat ''%y%m%d''\")",
       "Bash(python \"%USERPROFILE%/.claude/scripts/generate_catalogs.py\" --skills)",
-      "Bash(find /e/u-course/review-nudge/app -name *.tsx -o -name *.ts)"
+      "Bash(find /e/u-course/review-nudge/app -name *.tsx -o -name *.ts)",
+      "Bash(npm run:*)"
     ]
   }
 }

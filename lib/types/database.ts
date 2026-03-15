@@ -66,6 +66,10 @@ export type JobInsert = Omit<Job, "id">;
 export type ReviewRequestInsert = Omit<ReviewRequest, "id">;
 
 // ─── Supabase Database generic type (for createClient<Database>()) ───────────
+// Each table entry must include Row, Insert, Update, AND Relationships to
+// satisfy the GenericTable constraint in @supabase/postgrest-js. Without
+// Relationships the Insert type resolves to `never` on upsert/insert calls.
+// Views, Functions, and Enums are required by GenericSchema; empty is fine.
 
 export interface Database {
   public: {
@@ -74,22 +78,29 @@ export interface Database {
         Row: Profile;
         Insert: ProfileInsert;
         Update: Partial<ProfileInsert>;
+        Relationships: [];
       };
       customers: {
         Row: Customer;
         Insert: CustomerInsert;
         Update: Partial<CustomerInsert>;
+        Relationships: [];
       };
       jobs: {
         Row: Job;
         Insert: JobInsert;
         Update: Partial<JobInsert>;
+        Relationships: [];
       };
       review_requests: {
         Row: ReviewRequest;
         Insert: ReviewRequestInsert;
         Update: Partial<ReviewRequestInsert>;
+        Relationships: [];
       };
     };
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
   };
 }

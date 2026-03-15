@@ -34,7 +34,25 @@ export async function updateSession(request: NextRequest) {
   );
 
   // Refresh session — do NOT remove this line.
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const path = request.nextUrl.pathname;
+
+  // Unauthenticated users cannot access dashboard routes.
+  if (!user && path.startsWith("/dashboard")) {
+    const loginUrl = request.nextUrl.clone();
+    loginUrl.pathname = "/auth/login";
+    return NextResponse.redirect(loginUrl);
+  }
+
+  // Authenticated users are sent straight to the dashboard from auth pages.
+  if (user && path.startsWith("/auth")) {
+    const dashboardUrl = request.nextUrl.clone();
+    dashboardUrl.pathname = "/dashboard";
+    return NextResponse.redirect(dashboardUrl);
+  }
 
   return supabaseResponse;
 }
