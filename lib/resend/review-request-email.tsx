@@ -3,21 +3,22 @@
  * Rendered server-side and passed to resend.emails.send() via the `react` param.
  *
  * Props:
- *   customerName    — recipient's first/full name
- *   businessName    — sender's business name shown in copy
- *   googleReviewUrl — direct link to the Google review form
+ *   customerName — recipient's first/full name
+ *   businessName — sender's business name shown in copy
+ *   trackingUrl  — /api/track/[reviewRequestId] endpoint; records the click
+ *                  then redirects to the business's Google review page
  */
 
 interface ReviewRequestEmailProps {
   customerName: string;
   businessName: string;
-  googleReviewUrl: string;
+  trackingUrl: string;
 }
 
 export function ReviewRequestEmail({
   customerName,
   businessName,
-  googleReviewUrl,
+  trackingUrl,
 }: ReviewRequestEmailProps) {
   return (
     <html lang="en">
@@ -90,7 +91,7 @@ export function ReviewRequestEmail({
                     <tr>
                       <td align="center" style={{ paddingBottom: 28 }}>
                         <a
-                          href={googleReviewUrl}
+                          href={trackingUrl}
                           style={{
                             display: "inline-block",
                             backgroundColor: "#2563eb",
@@ -120,7 +121,7 @@ export function ReviewRequestEmail({
                         >
                           Button not working?{" "}
                           <a
-                            href={googleReviewUrl}
+                            href={trackingUrl}
                             style={{ color: "#2563eb", textDecoration: "underline" }}
                           >
                             Click here

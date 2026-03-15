@@ -45,8 +45,11 @@ export async function sendReviewRequest(
     customerEmail,
     businessName,
     fromEmail = "onboarding@resend.dev",
-    googleReviewUrl,
   } = params;
+
+  // Build click-tracking URL — records the click then redirects to googleReviewUrl
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "";
+  const trackingUrl = `${appUrl}/api/track/${reviewRequestId}`;
 
   const { data, error } = await resend.emails.send(
     {
@@ -56,7 +59,7 @@ export async function sendReviewRequest(
       react: ReviewRequestEmail({
         customerName,
         businessName,
-        googleReviewUrl,
+        trackingUrl,
       }),
       tags: [
         { name: 'type', value: 'review-request' },
