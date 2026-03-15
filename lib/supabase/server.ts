@@ -46,3 +46,17 @@ export function createAdminClient() {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 }
+
+/**
+ * Admin Supabase client without the Database generic.
+ * Use when complex nested selects cause PostgREST type inference to resolve
+ * table Update types to `never` (e.g. cron routes with multi-level joins).
+ * BYPASSES RLS — same security constraints as createAdminClient().
+ * NEVER expose this client to the browser.
+ */
+export function createUntypedAdminClient() {
+  return createSupabaseClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}

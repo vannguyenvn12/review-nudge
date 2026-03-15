@@ -1,6 +1,6 @@
 # Phase 8 — Cron API Route (`/api/send-pending-reviews`)
 
-**Status:** ⬜ Pending
+**Status:** ✅ Done
 **Depends on:** Phase 5 (review_requests must be inserted by logJobAction)
 
 ---
@@ -112,15 +112,15 @@ return NextResponse.json({ processed, failed })
 ---
 
 ## Tasks
-- [ ] Create `app/api/send-pending-reviews/route.ts`
-- [ ] Implement `Bearer CRON_SECRET` auth check (401 if invalid)
-- [ ] Use `createAdminClient()` (NOT regular createClient)
-- [ ] Query pending requests with nested joins
-- [ ] Loop: send email → update `review_requests.status` + `sent_at` → update `jobs.status`
-- [ ] Handle failures gracefully (set `status = 'failed'`, continue loop)
-- [ ] Skip requests with no `google_review_url` (log warning)
-- [ ] Return `{ processed, failed }` JSON
-- [ ] Add `CRON_SECRET` to `.env.local`
+- [x] Create `app/api/send-pending-reviews/route.ts`
+- [x] Implement `Bearer CRON_SECRET` auth check (401 if invalid)
+- [x] Use `createAdminClient()` (NOT regular createClient)
+- [x] Query pending requests with nested joins
+- [x] Loop: send email → update `review_requests.status` + `sent_at` → update `jobs.status`
+- [x] Handle failures gracefully (set `status = 'failed'`, continue loop)
+- [x] Skip requests with no `google_review_url` (log warning)
+- [x] Return `{ processed, failed }` JSON
+- [x] Add `CRON_SECRET` to `.env.local`
 - [ ] Test endpoint manually with `curl -H "Authorization: Bearer <secret>" http://localhost:3000/api/send-pending-reviews`
 
 ---

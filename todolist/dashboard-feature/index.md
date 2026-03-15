@@ -29,8 +29,8 @@
 | 5   | [Jobs Page](./phase-5-jobs-page.md)                   | ✅ Done    |
 | 6   | [Reviews Page](./phase-6-reviews-page.md)             | ✅ Done    |
 | 7   | [Settings Page](./phase-7-settings-page.md)           | ✅ Done    |
-| 8   | [Cron API Route](./phase-8-cron-api-route.md)         | ⬜ Pending |
-| 9   | [Vercel Cron Config](./phase-9-vercel-cron-config.md) | ⬜ Pending |
+| 8   | [Cron API Route](./phase-8-cron-api-route.md)         | ✅ Done    |
+| 9   | [External Cron Config (cron-job.org)](./phase-9-vercel-cron-config.md) | ⬜ Pending |
 
 ## Completion Checklist
 

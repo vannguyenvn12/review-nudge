@@ -1,4 +1,4 @@
-# Phase 9 — Vercel Cron Config
+# Phase 9 — External Cron Config (cron-job.org)
 
 **Status:** ⬜ Pending
 **Depends on:** Phase 8 (API route must exist)
@@ -6,64 +6,86 @@
 ---
 
 ## Goal
-Configure Vercel to call `/api/send-pending-reviews` every 15 minutes automatically in production.
+
+Configure [cron-job.org](https://cron-job.org) (free) to call `/api/send-pending-reviews` every 15 minutes in production. Replaces Vercel Cron (Hobby plan limited to 1× per day).
 
 ---
 
-## Files to Create
+## Files to Create / Modify
 
-| File | Description |
-|------|-------------|
-| `vercel.json` | Cron schedule config (project root) |
+| File | Description                                                  |
+| ---- | ------------------------------------------------------------ |
+| None | No code changes needed — Phase 8 route is already compatible |
 
 ---
 
-## Implementation Details
+## Setup Steps (cron-job.org Dashboard)
 
-### `vercel.json`
-```json
-{
-  "crons": [
-    {
-      "path": "/api/send-pending-reviews",
-      "schedule": "*/15 * * * *"
-    }
-  ]
-}
+1. Sign up / log in at **https://cron-job.org**
+2. Click **Create cronjob**
+3. Fill in:
+   | Field | Value |
+   |-------|-------|
+   | Title | `Review Nudge — Send Pending Reviews` |
+   | URL | `https://<your-vercel-domain>/api/send-pending-reviews` |
+   | Schedule | Every **15 minutes** (`*/15 * * * *`) |
+   | Request method | `GET` |
+4. Under **Advanced → Headers**, add:
+   ```
+   Authorization: Bearer <your-CRON_SECRET-value>
+   ```
+5. Save → **Enable**
+
+---
+
+## Environment Variable Setup
+
+`CRON_SECRET` is already in `.env.local` for local testing.
+
+Add to **Vercel Dashboard → Settings → Environment Variables**:
+
+```
+CRON_SECRET=<same value as .env.local>
 ```
 
-### How Vercel Cron Auth Works
-- Vercel **automatically injects** `Authorization: Bearer <CRON_SECRET>` on production cron calls
-- Set `CRON_SECRET` environment variable in Vercel project settings
-- Locally, you must pass the header manually for testing
+> ⚠️ Never commit `CRON_SECRET` to the repo.
 
-### Environment Variable Setup
-Add to `.env.local` (for local testing only):
-```env
-CRON_SECRET=your-random-secret-here
+---
+
+## Local Testing
+
+```bash
+curl -H "Authorization: Bearer <CRON_SECRET>" http://localhost:3000/api/send-pending-reviews
+# Expected: { "processed": N, "failed": M }
 ```
-Add to Vercel dashboard: **Settings → Environment Variables → `CRON_SECRET`**
 
 ---
 
 ## Tasks
-- [ ] Create `vercel.json` at project root
-- [ ] Add `CRON_SECRET` to `.env.local`
-- [ ] Add `CRON_SECRET` to Vercel environment variables (production)
-- [ ] Deploy to Vercel and verify cron appears in **Vercel → Project → Cron Jobs** tab
-- [ ] Verify cron fires correctly (check Vercel logs after 15 min)
+
+- [ ] Deploy app to Vercel and note the production URL
+- [ ] Add `CRON_SECRET` to Vercel environment variables
+- [ ] Create cron job on cron-job.org with correct URL + Authorization header
+- [ ] Set schedule to `*/15 * * * *`
+- [ ] Trigger manually from cron-job.org dashboard and verify `{ processed, failed }` response
+- [ ] Check execution history in cron-job.org after first automatic fire
 
 ---
 
-## Notes
-- Vercel Hobby plan: cron minimum interval is 1 day — upgrade to Pro for `*/15 * * * *`
-- For local development testing, trigger the route manually with curl
-- `schedule` format: standard 5-field cron in UTC
+## Why cron-job.org over Vercel Cron
+
+|              | Vercel Cron (Hobby)          | cron-job.org (Free)    |
+| ------------ | ---------------------------- | ---------------------- |
+| Min interval | 1× per day                   | 1× per minute          |
+| Config       | `vercel.json` in repo        | External dashboard     |
+| Auth         | Auto-injected by Vercel      | Manual header required |
+| Cost         | Pro plan required for `*/15` | Free                   |
 
 ---
 
 ## Success Criteria
-- `vercel.json` committed to repo
-- Cron job visible in Vercel dashboard after deployment
-- `CRON_SECRET` set in Vercel env vars (never committed to repo)
-- Cron successfully calls the route and processes pending emails in production
+
+- Cron job active on cron-job.org with correct URL and `Authorization` header
+- `CRON_SECRET` set in Vercel env vars (not committed)
+- Manual trigger returns `{ processed: N, failed: M }`
+- Automatic fires visible in cron-job.org execution history
