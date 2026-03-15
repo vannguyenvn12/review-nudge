@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pwsh -c \"Get-Date -UFormat ''%y%m%d''\")",
+      "Bash(python \"%USERPROFILE%/.claude/scripts/generate_catalogs.py\" --skills)"
+    ]
+  }
+}
