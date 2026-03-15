@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { ReviewRequestStatus } from "@/lib/types/database";
 import EmptyState from "@/app/dashboard/components/empty-state";
 import StatusBadge from "@/app/dashboard/components/status-badge";
+import MarkReviewedButton from "@/app/dashboard/reviews/mark-reviewed-button";
 
 // Local shape for the nested join result
 interface ReviewRequestRow {
@@ -82,7 +83,12 @@ export default async function ReviewsPage() {
                       : "—"}
                   </td>
                   <td className="px-4 py-3">
-                    <StatusBadge status={rr.status} />
+                    <div className="flex items-center gap-2">
+                      <StatusBadge status={rr.status} />
+                      {rr.status === "clicked" && (
+                        <MarkReviewedButton reviewRequestId={rr.id} />
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}
