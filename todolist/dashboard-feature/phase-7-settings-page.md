@@ -1,6 +1,6 @@
 # Phase 7 — Settings Page (`/dashboard/settings`)
 
-**Status:** ⬜ Pending
+**Status:** ✅ Done
 **Depends on:** Phase 1
 
 ---

@@ -1,6 +1,6 @@
 # Phase 6 — Reviews Page (`/dashboard/reviews`)
 
-**Status:** ⬜ Pending
+**Status:** ✅ Done
 **Depends on:** Phase 1, Phase 2
 
 ---
