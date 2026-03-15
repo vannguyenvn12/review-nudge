@@ -1,6 +1,6 @@
 # Phase 4 — Customers Page (`/dashboard/customers`)
 
-**Status:** ⬜ Pending
+**Status:** ✅ Done
 **Depends on:** Phase 1, Phase 2
 
 ---
@@ -57,12 +57,12 @@ const [state, action] = useActionState(createCustomerAction, null)
 ---
 
 ## Tasks
-- [ ] Create `actions.ts` with `createCustomerAction`
-- [ ] Create `add-customer-form.tsx` with validation + pending state
-- [ ] Replace shell `page.tsx` with real implementation
-- [ ] Verify customer appears in list after submit
-- [ ] Verify empty state renders when no customers
-- [ ] Verify error message shown on duplicate/invalid data
+- [x] Create `actions.ts` with `createCustomerAction`
+- [x] Create `add-customer-form.tsx` with validation + pending state
+- [x] Replace shell `page.tsx` with real implementation
+- [x] Verify customer appears in list after submit
+- [x] Verify empty state renders when no customers
+- [x] Verify error message shown on duplicate/invalid data
 
 ---
 
