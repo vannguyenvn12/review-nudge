@@ -1,6 +1,6 @@
 # Phase 3 — Overview Page (`/dashboard`)
 
-**Status:** ⬜ Pending
+**Status:** ✅ Completed
 **Depends on:** Phase 1, Phase 2
 
 ---
@@ -52,12 +52,12 @@ Columns: **Customer** · **Service** · **Completed At** · **Status**
 ---
 
 ## Tasks
-- [ ] Replace `app/dashboard/page.tsx` stub with real implementation
-- [ ] Parallel fetch: all jobs (for stats) + recent 10 jobs + all review_requests
-- [ ] Render 4 `<StatsCard />` components
-- [ ] Render recent jobs table with `<StatusBadge />`
-- [ ] Handle empty state (no jobs yet)
-- [ ] Verify stats calculate correctly
+- [x] Replace `app/dashboard/page.tsx` stub with real implementation
+- [x] Parallel fetch: all jobs (for stats) + recent 10 jobs + all review_requests
+- [x] Render 4 `<StatsCard />` components
+- [x] Render recent jobs table with `<StatusBadge />`
+- [x] Handle empty state (no jobs yet)
+- [x] Verify stats calculate correctly
 
 ---
 

@@ -1,6 +1,6 @@
 # Phase 2 — Shared Components
 
-**Status:** ⬜ Pending
+**Status:** ✅ Completed
 **Depends on:** Phase 1
 **Used by:** Phases 3, 4, 5, 6, 7
 
@@ -64,10 +64,10 @@ Colour map (Tailwind v4 classes):
 ---
 
 ## Tasks
-- [ ] Create `stats-card.tsx`
-- [ ] Create `status-badge.tsx` with all 7 status colours
-- [ ] Create `empty-state.tsx`
-- [ ] Verify types imported from `lib/types/database.ts`
+- [x] Create `stats-card.tsx`
+- [x] Create `status-badge.tsx` with all 7 status colours
+- [x] Create `empty-state.tsx`
+- [x] Verify types imported from `lib/types/database.ts`
 
 ---
 
