@@ -1,6 +1,6 @@
 # Phase 5 — Jobs Page (`/dashboard/jobs`)
 
-**Status:** ⬜ Pending
+**Status:** ✅ Done
 **Depends on:** Phase 1, Phase 2, Phase 4 (customers must exist)
 
 ---
@@ -68,14 +68,14 @@ const [state, action] = useActionState(logJobAction, null)
 ---
 
 ## Tasks
-- [ ] Create `actions.ts` with `logJobAction` (job insert + review_request insert)
-- [ ] Create `customer-select.tsx`
-- [ ] Create `log-job-form.tsx`
-- [ ] Replace shell `page.tsx` with real implementation
-- [ ] Verify: logging a job creates both `jobs` row AND `review_requests` row
-- [ ] Verify: `scheduled_at` = `completed_at` + `delay_hours` hours
-- [ ] Verify: guard shows empty state when no customers exist
-- [ ] Verify: table shows review scheduled time
+- [x] Create `actions.ts` with `logJobAction` (job insert + review_request insert)
+- [x] Create `customer-select.tsx`
+- [x] Create `log-job-form.tsx`
+- [x] Replace shell `page.tsx` with real implementation
+- [x] Verify: logging a job creates both `jobs` row AND `review_requests` row
+- [x] Verify: `scheduled_at` = `completed_at` + `delay_hours` hours
+- [x] Verify: guard shows empty state when no customers exist
+- [x] Verify: table shows review scheduled time
 
 ---
 

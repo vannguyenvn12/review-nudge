@@ -26,7 +26,7 @@
 | 2   | [Shared Components](./phase-2-shared-components.md)   | ✅ Done    |
 | 3   | [Overview Page](./phase-3-overview-page.md)           | ✅ Done    |
 | 4   | [Customers Page](./phase-4-customers-page.md)         | ✅ Done    |
-| 5   | [Jobs Page](./phase-5-jobs-page.md)                   | ⬜ Pending |
+| 5   | [Jobs Page](./phase-5-jobs-page.md)                   | ✅ Done    |
 | 6   | [Reviews Page](./phase-6-reviews-page.md)             | ⬜ Pending |
 | 7   | [Settings Page](./phase-7-settings-page.md)           | ⬜ Pending |
 | 8   | [Cron API Route](./phase-8-cron-api-route.md)         | ⬜ Pending |
