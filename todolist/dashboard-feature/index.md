@@ -20,7 +20,7 @@
 
 | # | Phase | Status |
 |---|-------|--------|
-| 1 | [Layout + Shell Pages](./phase-1-layout-shell.md) | ⬜ Pending |
+| 1 | [Layout + Shell Pages](./phase-1-layout-shell.md) | ✅ Done |
 | 2 | [Shared Components](./phase-2-shared-components.md) | ⬜ Pending |
 | 3 | [Overview Page](./phase-3-overview-page.md) | ⬜ Pending |
 | 4 | [Customers Page](./phase-4-customers-page.md) | ⬜ Pending |

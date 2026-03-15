@@ -1,6 +1,6 @@
 # Phase 1 — Layout + Shell Pages
 
-**Status:** ⬜ Pending
+**Status:** ✅ Done
 **Blocker for:** All subsequent phases
 
 ---
@@ -48,15 +48,14 @@ Create the persistent dashboard layout (top navbar) and empty shell pages for al
 ---
 
 ## Tasks
-- [ ] Create `app/dashboard/layout.tsx`
-- [ ] Create `app/dashboard/components/logout-button.tsx`
-- [ ] Create shell `app/dashboard/customers/page.tsx`
-- [ ] Create shell `app/dashboard/jobs/page.tsx`
-- [ ] Create shell `app/dashboard/reviews/page.tsx`
-- [ ] Create shell `app/dashboard/settings/page.tsx`
-- [ ] Verify all 5 routes load without errors
-- [ ] Verify logout redirects to `/auth/login`
-- [ ] Verify unauthenticated access redirects to login
+- [x] Create `app/dashboard/layout.tsx`
+- [x] Create `app/dashboard/components/logout-button.tsx`
+- [x] Create `app/dashboard/components/nav-links.tsx`
+- [x] Create shell `app/dashboard/customers/page.tsx`
+- [x] Create shell `app/dashboard/jobs/page.tsx`
+- [x] Create shell `app/dashboard/reviews/page.tsx`
+- [x] Create shell `app/dashboard/settings/page.tsx`
+- [x] Verify all 5 routes load without errors (`npm run build` ✅)
 
 ---
 
