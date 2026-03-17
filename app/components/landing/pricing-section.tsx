@@ -148,6 +148,20 @@ export default function PricingSection() {
         >
           No contracts. Cancel anytime. Upgrade or downgrade whenever.
         </p>
+
+        {/* Payment provider attribution */}
+        <p className='mt-3 text-center text-xs' style={{ color: 'var(--text-muted)' }}>
+          Secure checkout by{' '}
+          <a
+            href='https://polar.sh'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='underline-offset-2 hover:underline'
+            style={{ color: 'var(--text-muted)' }}
+          >
+            Polar
+          </a>
+        </p>
       </div>
     </section>
   );
