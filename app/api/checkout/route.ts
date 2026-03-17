@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import { Polar } from "@polar-sh/sdk";
 import { createClient } from "@/lib/supabase/server";
 
-const polar = new Polar({ accessToken: process.env.POLAR_API_KEY! });
+const polar = new Polar({
+  accessToken: process.env.POLAR_API_KEY!,
+  // Use sandbox when POLAR_SERVER=sandbox, otherwise production
+  server: (process.env.POLAR_SERVER as "sandbox" | "production") ?? "production",
+});
 
 /**
  * POST /api/checkout
