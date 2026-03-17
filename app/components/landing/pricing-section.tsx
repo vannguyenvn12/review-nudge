@@ -119,9 +119,9 @@ export default function PricingSection() {
                 })}
               </ul>
 
-              {/* CTA */}
+              {/* CTA — free tier goes to signup, paid tiers go straight to billing */}
               <Link
-                href='/auth/signup'
+                href={tier.id === 'free' ? '/auth/signup' : '/dashboard/billing'}
                 className='mt-auto rounded-lg px-6 py-3 text-center text-sm font-bold transition-all hover:scale-[1.02] hover:opacity-90'
                 style={
                   tier.cta.style === 'amber'
