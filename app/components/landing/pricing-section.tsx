@@ -3,66 +3,7 @@
 // Server Component
 
 import Link from 'next/link';
-
-const tiers = [
-  {
-    name: 'Free',
-    price: '$0',
-    badge: {
-      label: 'Start here',
-      color: 'var(--brand-emerald)',
-      text: 'white',
-    },
-    highlight: false,
-    roiNote: null,
-    features: [
-      '3 customers / month',
-      '1 email template',
-      'Basic job dashboard',
-      'Click tracking',
-      'ReviewNudge branding in email footer',
-    ],
-    // Mark features that are limitations (shown with muted x instead of checkmark)
-    limitations: ['ReviewNudge branding in email footer'],
-    cta: { label: 'Get Started Free', style: 'outline' },
-  },
-  {
-    name: 'Starter',
-    price: '$9',
-    badge: {
-      label: 'Most Popular',
-      color: 'var(--brand-amber)',
-      text: 'var(--brand-navy)',
-    },
-    highlight: true,
-    roiNote: 'Less than 1 missed job',
-    features: [
-      '30 customers / month',
-      '1 email template',
-      'Basic job dashboard',
-      'Click tracking',
-      'No ReviewNudge branding',
-    ],
-    limitations: [],
-    cta: { label: 'Start Starter Trial', style: 'amber' },
-  },
-  {
-    name: 'Pro',
-    price: '$19',
-    badge: null,
-    highlight: false,
-    roiNote: 'Less than the cost of 1 lost customer',
-    features: [
-      'Unlimited customers',
-      'Custom email templates',
-      'Review tracking & analytics',
-      'No ReviewNudge branding',
-      'Priority support',
-    ],
-    limitations: [],
-    cta: { label: 'Start Pro Trial', style: 'outline' },
-  },
-];
+import { PRICING_PLANS } from '@/lib/config/pricing-plans';
 
 export default function PricingSection() {
   return (
@@ -87,7 +28,7 @@ export default function PricingSection() {
 
         {/* 3-column cards */}
         <div className='grid gap-6 md:grid-cols-3 md:items-start'>
-          {tiers.map((tier) => (
+          {PRICING_PLANS.map((tier) => (
             <div
               key={tier.name}
               className='flex flex-col rounded-2xl bg-white p-8 shadow-sm'
@@ -136,7 +77,7 @@ export default function PricingSection() {
                   style={{ color: 'var(--text-muted)' }}
                 >
                   {' '}
-                  / month
+                  {tier.period}
                 </span>
               </div>
 

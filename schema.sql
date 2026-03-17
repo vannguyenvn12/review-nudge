@@ -15,7 +15,13 @@ create table if not exists public.profiles (
   full_name text,
   business_name text,
   google_review_url text,
-  delay_hours integer not null default 2 check (delay_hours >= 0)
+  delay_hours integer not null default 2 check (delay_hours >= 0),
+  -- Polar.sh subscription tracking
+  subscription_tier               text not null default 'free',
+  subscription_status             text not null default 'active',
+  polar_customer_id               text,
+  polar_subscription_id           text,
+  subscription_current_period_end timestamptz
 );
 
 create table if not exists public.customers (

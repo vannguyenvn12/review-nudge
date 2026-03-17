@@ -16,6 +16,12 @@ export interface Profile {
   business_name: string | null;
   google_review_url: string | null;
   delay_hours: number; // default: 2
+  // Polar.sh subscription tracking
+  subscription_tier: string; // 'free' | 'starter' | 'pro'
+  subscription_status: string; // 'active' | 'canceled' | 'past_due'
+  polar_customer_id: string | null;
+  polar_subscription_id: string | null;
+  subscription_current_period_end: string | null; // ISO 8601 timestamptz
 }
 
 export interface Customer {
@@ -55,8 +61,21 @@ export interface ReviewRequest {
 
 // ─── Insert types (omit auto-generated fields) ───────────────────────────────
 
-export type ProfileInsert = Omit<Profile, "delay_hours"> & {
+export type ProfileInsert = Omit<
+  Profile,
+  | "delay_hours"
+  | "subscription_tier"
+  | "subscription_status"
+  | "polar_customer_id"
+  | "polar_subscription_id"
+  | "subscription_current_period_end"
+> & {
   delay_hours?: number;
+  subscription_tier?: string;
+  subscription_status?: string;
+  polar_customer_id?: string | null;
+  polar_subscription_id?: string | null;
+  subscription_current_period_end?: string | null;
 };
 
 export type CustomerInsert = Omit<Customer, "id">;
