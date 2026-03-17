@@ -29,8 +29,10 @@ create table if not exists public.customers (
   user_id uuid not null references public.profiles(id) on delete cascade,
   name text not null,
   email text,
-  phone text
+  phone text,
+  created_at timestamptz not null default now()
 );
+-- Migration (existing DBs): ALTER TABLE public.customers ADD COLUMN IF NOT EXISTS created_at timestamptz NOT NULL DEFAULT now();
 
 create table if not exists public.jobs (
   id uuid primary key default gen_random_uuid(),
@@ -56,6 +58,9 @@ create table if not exists public.review_requests (
 
 create index if not exists customers_user_id_idx
   on public.customers(user_id);
+
+create index if not exists customers_created_at_idx
+  on public.customers(user_id, created_at);
 
 create index if not exists jobs_user_id_idx
   on public.jobs(user_id);

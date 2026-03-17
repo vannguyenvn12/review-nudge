@@ -4,3 +4,6 @@ ALTER TABLE public.profiles
   ADD COLUMN IF NOT EXISTS polar_customer_id               text,
   ADD COLUMN IF NOT EXISTS polar_subscription_id           text,
   ADD COLUMN IF NOT EXISTS subscription_current_period_end timestamptz;
+
+
+ALTER TABLE public.customers ADD COLUMN IF NOT EXISTS created_at timestamptz NOT NULL DEFAULT now();

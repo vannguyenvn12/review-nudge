@@ -91,3 +91,13 @@ export const PRICING_PLANS: PricingPlan[] = [
 export const PAID_PLANS = PRICING_PLANS.filter((p) => p.id !== 'free') as Array<
   PricingPlan & { id: 'starter' | 'pro' }
 >;
+
+/**
+ * Max customers allowed per billing period, keyed by subscription tier.
+ * Pro = Infinity (no limit enforced — count query is skipped entirely).
+ */
+export const CUSTOMER_TIER_LIMITS: Record<PlanId, number> = {
+  free: 3,
+  starter: 30,
+  pro: Infinity,
+};
