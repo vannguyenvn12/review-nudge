@@ -34,8 +34,8 @@ export default async function SettingsPage() {
         <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
         {isFreeTier && (
           <UpgradeModal
-            starterProductId={process.env.NEXT_PUBLIC_POLAR_STARTER_PRODUCT_ID ?? ""}
-            proProductId={process.env.NEXT_PUBLIC_POLAR_PRO_PRODUCT_ID ?? ""}
+            starterProductId={process.env.POLAR_STARTER_PRODUCT_ID ?? ""}
+            proProductId={process.env.POLAR_PRO_PRODUCT_ID ?? ""}
           />
         )}
       </div>
